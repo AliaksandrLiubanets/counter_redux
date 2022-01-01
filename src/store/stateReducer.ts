@@ -1,7 +1,16 @@
-const SET_MAX_VALUE = 'counter/state-reducer/SET_MAX_VALUE'
-const SET_START_VALUE = 'counter/state-reducer/SET_START_VALUE'
-const SET_EDIT_MODE = 'counter/state-reducer/SET_EDIT_MODE'
-const SET_SECOND_VARIANT = 'counter/state-reducer/SET_SECOND_VARIANT'
+
+
+// export const SET_MAX_VALUE = 'counter/state-reducer/SET_MAX_VALUE'
+// export const SET_START_VALUE = 'counter/state-reducer/SET_START_VALUE'
+// export const SET_EDIT_MODE = 'counter/state-reducer/SET_EDIT_MODE'
+// export const SET_SECOND_VARIANT = 'counter/state-reducer/SET_SECOND_VARIANT'
+
+export enum StateValues {
+  SET_MAX_VALUE = 'counter/state-reducer/SET_MAX_VALUE',
+  SET_START_VALUE = 'counter/state-reducer/SET_START_VALUE',
+  SET_EDIT_MODE = 'counter/state-reducer/SET_EDIT_MODE',
+  SET_SECOND_VARIANT = 'counter/state-reducer/SET_SECOND_VARIANT',
+}
 
 const initialState = {
   maxValue: 0,
@@ -10,39 +19,39 @@ const initialState = {
   isSecondVariant: false
 }
 
-type StateType = typeof initialState
+export type StateType = typeof initialState
 
-type SetMaxValueType = {
-  type: typeof SET_MAX_VALUE
+export type SetMaxValueType = {
+  type: typeof StateValues.SET_MAX_VALUE
   maxValue: number
 }
 
-type SetStartValueType = {
-  type: typeof SET_START_VALUE
+export type SetStartValueType = {
+  type: typeof StateValues.SET_START_VALUE
   startValue: number
 }
 
-type SetEditModeType = {
-  type: typeof SET_EDIT_MODE
+export type SetEditModeType = {
+  type: typeof StateValues.SET_EDIT_MODE
   editMode: boolean
 }
 
-type SetSecondVariantType = {
-  type: typeof SET_SECOND_VARIANT
+export type SetSecondVariantType = {
+  type: typeof StateValues.SET_SECOND_VARIANT
   isSecondVariant: boolean
 }
 
-type ActionType = SetMaxValueType | SetStartValueType | SetEditModeType | SetSecondVariantType
+export type ActionType = SetMaxValueType | SetStartValueType | SetEditModeType | SetSecondVariantType
 
-export const stateReducer = (state: StateType = initialState, action: ActionType): StateType => {
+export const stateReducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
-    case SET_MAX_VALUE:
+    case StateValues.SET_MAX_VALUE:
       return {...state, maxValue: action.maxValue}
-    case SET_START_VALUE:
+    case StateValues.SET_START_VALUE:
       return {...state, startValue: action.startValue}
-    case SET_EDIT_MODE:
+    case StateValues.SET_EDIT_MODE:
       return {...state, editMode: action.editMode}
-    case SET_SECOND_VARIANT:
+    case StateValues.SET_SECOND_VARIANT:
       return {...state, isSecondVariant: action.isSecondVariant}
     default:
       return state
