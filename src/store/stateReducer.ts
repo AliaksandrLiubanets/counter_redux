@@ -21,6 +21,11 @@ type SetStartValueType = {
   startValue: number
 }
 
+type SetEditModeType = {
+  type: typeof SET_EDIT_MODE
+  editMode: boolean
+}
+
 type ActionType = SetMaxValueType | SetStartValueType
 
 export const stateReducer = (state: StateType = initialState, action: ActionType): StateType => {
