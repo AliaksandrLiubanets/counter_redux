@@ -1,4 +1,6 @@
 const SET_MAX_VALUE = 'counter/state-reducer/SET_MAX_VALUE'
+const SET_START_VALUE = 'counter/state-reducer/SET_START_VALUE'
+const SET_EDIT_MODE = 'counter/state-reducer/SET_EDIT_MODE'
 
 const initialState = {
   maxValue: 0,
@@ -14,8 +16,17 @@ type SetMaxValueType = {
   maxValue: number
 }
 
-type ActionType = SetMaxValueType
+type SetStartValueType = {
+  type: typeof SET_START_VALUE
+  startValue: number
+}
+
+type ActionType = SetMaxValueType | SetStartValueType
 
 export const stateReducer = (state: StateType = initialState, action: ActionType): StateType => {
+  switch (action.type) {
+    case SET_MAX_VALUE:
+      return {...state, maxValue: action.maxValue}
+  }
   return state
 }
