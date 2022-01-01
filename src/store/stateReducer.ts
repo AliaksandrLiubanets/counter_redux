@@ -47,5 +47,4 @@ export const stateReducer = (state: StateType = initialState, action: ActionType
     default:
       return state
   }
-
 }
