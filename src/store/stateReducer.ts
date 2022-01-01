@@ -38,6 +38,14 @@ export const stateReducer = (state: StateType = initialState, action: ActionType
   switch (action.type) {
     case SET_MAX_VALUE:
       return {...state, maxValue: action.maxValue}
+    case SET_START_VALUE:
+      return {...state, startValue: action.startValue}
+    case SET_EDIT_MODE:
+      return {...state, editMode: action.editMode}
+    case SET_SECOND_VARIANT:
+      return {...state, isSecondVariant: action.isSecondVariant}
+    default:
+      return state
   }
-  return state
+
 }
