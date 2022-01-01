@@ -38,15 +38,18 @@ function App() {
     }
 
     const offSetVariant = () => {
-        setIsSecondVariant(false)
+        // setIsSecondVariant(false)
+        dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
         localStorage.setItem('isSecondVariant', JSON.stringify(false))
     }
     const onSetVariant = () => {
-        setIsSecondVariant(true)
+        // setIsSecondVariant(true)
+        dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: true})
         localStorage.setItem('isSecondVariant', JSON.stringify(true))
     }
 
-    const contentStyle = `${isSecondVariant ? s.contentCenter : s.content}`
+    // const contentStyle = `${isSecondVariant ? s.contentCenter : s.content}`
+    const contentStyle = `${state.isSecondVariant ? s.contentCenter : s.content}`
 
     return <div className="App">
         <div className={s.header}>
