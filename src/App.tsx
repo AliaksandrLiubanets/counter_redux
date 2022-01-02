@@ -78,10 +78,10 @@ function App() {
                 />}
                 />
                 <Route path="/counter" element={<DisplayCounter
-                    editMode={editMode}
-                    maxValue={maxValue}
-                    startValue={startValue}
-                    isSecondVariant={isSecondVariant}
+                    editMode={state.editMode}
+                    maxValue={state.maxValue}
+                    startValue={state.startValue}
+                    isSecondVariant={state.isSecondVariant}
                 />}
                 />
                 <Route path="/settings" element={<DisplaySettings
