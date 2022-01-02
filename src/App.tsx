@@ -89,10 +89,10 @@ function App() {
                     setStartValue={setStartValue}
                     setValueToStorage={setValueToStorage}
                     setEditMode={setEditMode}
-                    maxValue={maxValue}
-                    startValue={startValue}
-                    editMode={editMode}
-                    isSecondVariant={isSecondVariant}
+                    maxValue={state.maxValue}
+                    startValue={state.startValue}
+                    editMode={state.editMode}
+                    isSecondVariant={state.isSecondVariant}
                 />}
                 />
             </Routes>
