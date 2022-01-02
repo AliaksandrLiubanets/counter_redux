@@ -51,6 +51,10 @@ function App() {
     // const contentStyle = `${isSecondVariant ? s.contentCenter : s.content}`
     const contentStyle = `${state.isSecondVariant ? s.contentCenter : s.content}`
 
+    const setMaxValue = (maxValue: number) => dispatch({type: StateValues.SET_MAX_VALUE, maxValue})
+    const setStartValue = (startValue: number) => dispatch({type: StateValues.SET_START_VALUE, startValue})
+    const setEditMode = (editMode: boolean) => dispatch({type: StateValues.SET_EDIT_MODE, editMode})
+
     return <div className="App">
         <div className={s.header}>
             <Link to="/">
@@ -67,10 +71,10 @@ function App() {
                     setStartValue={setStartValue}
                     setValueToStorage={setValueToStorage}
                     setEditMode={setEditMode}
-                    maxValue={maxValue}
-                    startValue={startValue}
-                    editMode={editMode}
-                    isSecondVariant={isSecondVariant}
+                    maxValue={state.maxValue}
+                    startValue={state.startValue}
+                    editMode={state.editMode}
+                    isSecondVariant={state.isSecondVariant}
                 />}
                 />
                 <Route path="/counter" element={<DisplayCounter
