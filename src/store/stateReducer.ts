@@ -10,13 +10,17 @@ export enum StateValues {
   SET_START_VALUE = 'counter/state-reducer/SET_START_VALUE',
   SET_EDIT_MODE = 'counter/state-reducer/SET_EDIT_MODE',
   SET_SECOND_VARIANT = 'counter/state-reducer/SET_SECOND_VARIANT',
+  SET_FIRST_VARIANT_STYLE = 'counter/state-reducer/SET_FIRST_VARIANT_STYLE',
+  SET_SECOND_VARIANT_STYLE = 'counter/state-reducer/SET_SECOND_VARIANT_STYLE',
 }
 
 const initialState = {
   maxValue: 0,
   startValue: 0,
   editMode: false,
-  isSecondVariant: false
+  isSecondVariant: false,
+  firstVariantStyle: true,
+  secondVariantStyle: false,
 }
 
 export type StateType = typeof initialState
@@ -41,7 +45,22 @@ export type SetSecondVariantType = {
   isSecondVariant: boolean
 }
 
-export type ActionType = SetMaxValueType | SetStartValueType | SetEditModeType | SetSecondVariantType
+export type SetFirstVariantStyleType = {
+  type: typeof StateValues.SET_FIRST_VARIANT_STYLE
+  firstVariantStyle: boolean
+}
+
+export type SetSecondVariantStyleType = {
+  type: typeof StateValues.SET_SECOND_VARIANT_STYLE
+  secondVariantStyle: boolean
+}
+
+export type ActionType = SetMaxValueType
+    | SetStartValueType
+    | SetEditModeType
+    | SetSecondVariantType
+    | SetFirstVariantStyleType
+    | SetSecondVariantStyleType
 
 export const stateReducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
@@ -53,6 +72,10 @@ export const stateReducer = (state: StateType, action: ActionType): StateType =>
       return {...state, editMode: action.editMode}
     case StateValues.SET_SECOND_VARIANT:
       return {...state, isSecondVariant: action.isSecondVariant}
+    case StateValues.SET_FIRST_VARIANT_STYLE:
+      return {...state, firstVariantStyle: action.firstVariantStyle}
+    case StateValues.SET_SECOND_VARIANT_STYLE:
+      return {...state, secondVariantStyle: action.secondVariantStyle}
     default:
       return state
   }

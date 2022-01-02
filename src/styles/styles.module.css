@@ -22,6 +22,10 @@
     color: #38eeee;
 }
 
+.current {
+    color: #38eeee;
+}
+
 .header a:first-child {
     margin-left: 30px;
 }

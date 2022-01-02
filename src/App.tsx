@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer} from 'react'
+import React, {useEffect, useReducer, useState} from 'react'
 import './App.css'
 import s from './styles/styles.module.css'
 import {FirstVariant} from './components/FirstVariant'
@@ -14,11 +14,15 @@ function App() {
     // const [editMode, setEditMode] = useState<boolean>(false)
     // const [isSecondVariant, setIsSecondVariant] = useState<boolean>(false)
 
+    const [currentStyle, setCurrentStyle] = useState<boolean>(false)
+
     const [state, dispatch] = useReducer(stateReducer, {
         maxValue: 0,
         startValue: 0,
         editMode: false,
-        isSecondVariant: false
+        isSecondVariant: false,
+        firstVariantStyle: true,
+        secondVariantStyle: false,
     })
 
     useEffect(() => {
@@ -39,6 +43,7 @@ function App() {
 
     const offSetVariant = () => {
         // setIsSecondVariant(false)
+        dispatch(type: StateValues.)
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
         localStorage.setItem('isSecondVariant', JSON.stringify(false))
     }
@@ -55,13 +60,15 @@ function App() {
     const setStartValue = (startValue: number) => dispatch({type: StateValues.SET_START_VALUE, startValue})
     const setEditMode = (editMode: boolean) => dispatch({type: StateValues.SET_EDIT_MODE, editMode})
 
+
+
     return <div className="App">
         <div className={s.header}>
             <Link to="/">
-                <span onClick={offSetVariant}>first variant</span>
+                <span className={currentStyle ? s.current : ''} onClick={offSetVariant}>first variant</span>
             </Link>
             <Link to="/counter">
-                <span onClick={onSetVariant}>second variant</span>
+                <span className={currentStyle ? s.current : ''} onClick={onSetVariant}>second variant</span>
             </Link>
         </div>
         <div className={contentStyle}>
