@@ -11,6 +11,15 @@
 .header a {
     display: block;
     text-transform: uppercase;
+    color: blue;
+}
+
+.header a:hover {
+    color: #3f3fcb;
+}
+
+.header a:active {
+    color: #38eeee;
 }
 
 .header a:first-child {
