@@ -12,10 +12,6 @@
     text-decoration: none;
     display: block;
     text-transform: uppercase;
-    color: blue;
-}
-
-.header a:hover {
     color: #3f3fcb;
 }
 
