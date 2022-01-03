@@ -20,3 +20,10 @@ test('set start value', () => {
     expect(result2.startValue).toBe(-1)
 })
 
+test('set second variant', () => {
+
+    const result = stateReducer(state,{type: StateValues.SET_SECOND_VARIANT, isSecondVariant: true})
+
+    expect(result.isSecondVariant).toBe(true)
+})
+
