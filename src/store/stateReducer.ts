@@ -45,22 +45,10 @@ export type SetSecondVariantType = {
   isSecondVariant: boolean
 }
 
-export type SetFirstVariantStyleType = {
-  type: typeof StateValues.SET_FIRST_VARIANT_STYLE
-  firstVariantStyle: boolean
-}
-
-export type SetSecondVariantStyleType = {
-  type: typeof StateValues.SET_SECOND_VARIANT_STYLE
-  secondVariantStyle: boolean
-}
-
 export type ActionType = SetMaxValueType
     | SetStartValueType
     | SetEditModeType
     | SetSecondVariantType
-    | SetFirstVariantStyleType
-    | SetSecondVariantStyleType
 
 export const stateReducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
@@ -72,10 +60,6 @@ export const stateReducer = (state: StateType, action: ActionType): StateType =>
       return {...state, editMode: action.editMode}
     case StateValues.SET_SECOND_VARIANT:
       return {...state, isSecondVariant: action.isSecondVariant}
-    case StateValues.SET_FIRST_VARIANT_STYLE:
-      return {...state, firstVariantStyle: action.firstVariantStyle}
-    case StateValues.SET_SECOND_VARIANT_STYLE:
-      return {...state, secondVariantStyle: action.secondVariantStyle}
     default:
       return state
   }
