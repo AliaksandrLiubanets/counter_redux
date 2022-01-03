@@ -10,20 +10,14 @@ export enum StateValues {
   SET_START_VALUE = 'counter/state-reducer/SET_START_VALUE',
   SET_EDIT_MODE = 'counter/state-reducer/SET_EDIT_MODE',
   SET_SECOND_VARIANT = 'counter/state-reducer/SET_SECOND_VARIANT',
-  SET_FIRST_VARIANT_STYLE = 'counter/state-reducer/SET_FIRST_VARIANT_STYLE',
-  SET_SECOND_VARIANT_STYLE = 'counter/state-reducer/SET_SECOND_VARIANT_STYLE',
 }
 
-const initialState = {
-  maxValue: 0,
-  startValue: 0,
-  editMode: false,
-  isSecondVariant: false,
-  firstVariantStyle: true,
-  secondVariantStyle: false,
+export type StateType = {
+  maxValue: number,
+  startValue: number,
+  editMode: boolean,
+  isSecondVariant: boolean,
 }
-
-export type StateType = typeof initialState
 
 export type SetMaxValueType = {
   type: typeof StateValues.SET_MAX_VALUE
