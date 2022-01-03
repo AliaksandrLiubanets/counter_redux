@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react'
+import React, {useEffect, useReducer} from 'react'
 import './App.css'
 import s from './styles/styles.module.css'
 import {FirstVariant} from './components/FirstVariant'
@@ -9,29 +9,17 @@ import {stateReducer, StateValues} from './store/stateReducer'
 
 function App() {
 
-    // const [maxValue, setMaxValue] = useState<number>(0)
-    // const [startValue, setStartValue] = useState<number>(0)
-    // const [editMode, setEditMode] = useState<boolean>(false)
-    // const [isSecondVariant, setIsSecondVariant] = useState<boolean>(false)
-
-    const [currentStyle, setCurrentStyle] = useState<boolean>(false)
-
     const [state, dispatch] = useReducer(stateReducer, {
         maxValue: 0,
         startValue: 0,
         editMode: false,
         isSecondVariant: false,
-        firstVariantStyle: true,
-        secondVariantStyle: false,
     })
 
     useEffect(() => {
-        // setMaxValue(Number(localStorage.getItem('maxValue')))
         dispatch({type: StateValues.SET_MAX_VALUE, maxValue: Number(localStorage.getItem('maxValue'))})
-        // setStartValue(Number(localStorage.getItem('startValue')))
         dispatch({type: StateValues.SET_START_VALUE, startValue: Number(localStorage.getItem('startValue'))})
         const booleanValue = localStorage.getItem('isSecondVariant')
-        // booleanValue && setIsSecondVariant(JSON.parse(booleanValue))
         booleanValue && dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: JSON.parse(booleanValue)})
     }, [])
 
@@ -42,18 +30,13 @@ function App() {
     }
 
     const offSetVariant = () => {
-        // setIsSecondVariant(false)
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
         localStorage.setItem('isSecondVariant', JSON.stringify(false))
     }
     const onSetVariant = () => {
-        // setIsSecondVariant(true)
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: true})
         localStorage.setItem('isSecondVariant', JSON.stringify(true))
     }
-
-    // const contentStyle = `${isSecondVariant ? s.contentCenter : s.content}`
-    const contentStyle = `${state.isSecondVariant ? s.contentCenter : s.content}`
 
     const setMaxValue = (maxValue: number) => dispatch({type: StateValues.SET_MAX_VALUE, maxValue})
     const setStartValue = (startValue: number) => dispatch({type: StateValues.SET_START_VALUE, startValue})
@@ -61,6 +44,7 @@ function App() {
 
     const firstVariantStyle = !state.isSecondVariant ? s.current : ''
     const secondVariantStyle = state.isSecondVariant ? s.current : ''
+    const contentStyle = `${state.isSecondVariant ? s.contentCenter : s.content}`
 
     return <div className="App">
         <div className={s.header}>
