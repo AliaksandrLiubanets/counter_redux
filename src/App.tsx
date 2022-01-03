@@ -43,7 +43,6 @@ function App() {
 
     const offSetVariant = () => {
         // setIsSecondVariant(false)
-        dispatch(type: StateValues.)
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
         localStorage.setItem('isSecondVariant', JSON.stringify(false))
     }
@@ -60,15 +59,16 @@ function App() {
     const setStartValue = (startValue: number) => dispatch({type: StateValues.SET_START_VALUE, startValue})
     const setEditMode = (editMode: boolean) => dispatch({type: StateValues.SET_EDIT_MODE, editMode})
 
-
+    const firstVariantStyle = !state.isSecondVariant ? s.current : ''
+    const secondVariantStyle = state.isSecondVariant ? s.current : ''
 
     return <div className="App">
         <div className={s.header}>
             <Link to="/">
-                <span className={currentStyle ? s.current : ''} onClick={offSetVariant}>first variant</span>
+                <span className={firstVariantStyle} onClick={offSetVariant}>first variant</span>
             </Link>
             <Link to="/counter">
-                <span className={currentStyle ? s.current : ''} onClick={onSetVariant}>second variant</span>
+                <span className={secondVariantStyle} onClick={onSetVariant}>second variant</span>
             </Link>
         </div>
         <div className={contentStyle}>
