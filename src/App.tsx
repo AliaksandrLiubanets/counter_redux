@@ -21,21 +21,28 @@ function App() {
         dispatch({type: StateValues.SET_START_VALUE, startValue: Number(localStorage.getItem('startValue'))})
         const booleanValue = localStorage.getItem('isSecondVariant')
         booleanValue && dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: JSON.parse(booleanValue)})
+
     }, [])
 
-    const setValueToStorage = () => {
+    useEffect(() => {
         localStorage.setItem('maxValue', JSON.stringify(state.maxValue))
         localStorage.setItem('startValue', JSON.stringify(state.startValue))
         localStorage.setItem('isSecondVariant', JSON.stringify(state.isSecondVariant))
+    }, [state.maxValue, state.startValue, state.isSecondVariant])
+
+    const setValueToStorage = () => {
+        // localStorage.setItem('maxValue', JSON.stringify(state.maxValue))
+        // localStorage.setItem('startValue', JSON.stringify(state.startValue))
+        // localStorage.setItem('isSecondVariant', JSON.stringify(state.isSecondVariant))
     }
 
     const offSetVariant = () => {
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
-        localStorage.setItem('isSecondVariant', JSON.stringify(false))
+        // localStorage.setItem('isSecondVariant', JSON.stringify(false))
     }
     const onSetVariant = () => {
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: true})
-        localStorage.setItem('isSecondVariant', JSON.stringify(true))
+        // localStorage.setItem('isSecondVariant', JSON.stringify(true))
     }
 
     const setMaxValue = (maxValue: number) => dispatch({type: StateValues.SET_MAX_VALUE, maxValue})
