@@ -5,7 +5,7 @@ import {FirstVariant} from './components/FirstVariant'
 import {Link, Route, Routes} from 'react-router-dom'
 import DisplayCounter from './components/DisplayCounter'
 import DisplaySettings from './components/DisplaySettings'
-import {setMaxValueAC, setSecondVariantAC, setStartValueAC, stateReducer, StateValues} from './store/stateReducer'
+import {setEditModeAC, setMaxValueAC, setSecondVariantAC, setStartValueAC, stateReducer} from './store/stateReducer'
 
 function App() {
 
@@ -39,9 +39,9 @@ function App() {
         dispatch(setSecondVariantAC(true))
     }
 
-    const setMaxValue = (maxValue: number) => dispatch({type: StateValues.SET_MAX_VALUE, maxValue})
-    const setStartValue = (startValue: number) => dispatch({type: StateValues.SET_START_VALUE, startValue})
-    const setEditMode = (editMode: boolean) => dispatch({type: StateValues.SET_EDIT_MODE, editMode})
+    const setMaxValue = (maxValue: number) => dispatch(setMaxValueAC(maxValue))
+    const setStartValue = (startValue: number) => dispatch(setStartValueAC(startValue))
+    const setEditMode = (editMode: boolean) => dispatch(setEditModeAC(editMode))
 
     const firstVariantStyle = !state.isSecondVariant ? s.current : ''
     const secondVariantStyle = state.isSecondVariant ? s.current : ''
