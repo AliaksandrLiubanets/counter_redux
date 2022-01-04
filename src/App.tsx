@@ -33,10 +33,10 @@ function App() {
     }
 
     const offSetVariant = () => {
-        dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
+        dispatch(setSecondVariantAC(false))
     }
     const onSetVariant = () => {
-        dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: true})
+        dispatch(setSecondVariantAC(true))
     }
 
     const setMaxValue = (maxValue: number) => dispatch({type: StateValues.SET_MAX_VALUE, maxValue})
