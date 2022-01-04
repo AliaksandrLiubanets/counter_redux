@@ -44,7 +44,14 @@ export type ActionType = SetMaxValueType
     | SetEditModeType
     | SetSecondVariantType
 
-export const stateReducer = (state: StateType, action: ActionType): StateType => {
+const initialState: StateType = {
+      maxValue: 0,
+      startValue: 0,
+      editMode: false,
+      isSecondVariant: false,
+  }
+
+export const stateReducer = (state: StateType = initialState, action: ActionType): StateType => {
   switch (action.type) {
     case StateValues.SET_MAX_VALUE:
       return {...state, maxValue: action.maxValue}
