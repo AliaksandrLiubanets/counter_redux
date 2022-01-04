@@ -31,18 +31,13 @@ function App() {
     }, [state.maxValue, state.startValue, state.isSecondVariant])
 
     const setValueToStorage = () => {
-        // localStorage.setItem('maxValue', JSON.stringify(state.maxValue))
-        // localStorage.setItem('startValue', JSON.stringify(state.startValue))
-        // localStorage.setItem('isSecondVariant', JSON.stringify(state.isSecondVariant))
     }
 
     const offSetVariant = () => {
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: false})
-        // localStorage.setItem('isSecondVariant', JSON.stringify(false))
     }
     const onSetVariant = () => {
         dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: true})
-        // localStorage.setItem('isSecondVariant', JSON.stringify(true))
     }
 
     const setMaxValue = (maxValue: number) => dispatch({type: StateValues.SET_MAX_VALUE, maxValue})

@@ -58,3 +58,8 @@ export const stateReducer = (state: StateType, action: ActionType): StateType =>
       return state
   }
 }
+
+export const setMaxValueAC = (maxValue: number) => ({type:  StateValues.SET_MAX_VALUE, maxValue})
+export const setStartValueAC = (startValue: number) => ({type:  StateValues.SET_START_VALUE, startValue})
+export const setEditModeAC = (editMode: boolean) => ({type:  StateValues.SET_EDIT_MODE, editMode})
+export const setSecondVariantAC = (isSecondVariant: boolean) => ({type:  StateValues.SET_SECOND_VARIANT, isSecondVariant})
