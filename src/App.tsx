@@ -5,7 +5,7 @@ import {FirstVariant} from './components/FirstVariant'
 import {Link, Route, Routes} from 'react-router-dom'
 import DisplayCounter from './components/DisplayCounter'
 import DisplaySettings from './components/DisplaySettings'
-import {stateReducer, StateValues} from './store/stateReducer'
+import {setMaxValueAC, setSecondVariantAC, setStartValueAC, stateReducer, StateValues} from './store/stateReducer'
 
 function App() {
 
@@ -17,11 +17,10 @@ function App() {
     })
 
     useEffect(() => {
-        dispatch({type: StateValues.SET_MAX_VALUE, maxValue: Number(localStorage.getItem('maxValue'))})
-        dispatch({type: StateValues.SET_START_VALUE, startValue: Number(localStorage.getItem('startValue'))})
+        dispatch(setMaxValueAC(Number(localStorage.getItem('maxValue'))))
+        dispatch(setStartValueAC(Number(localStorage.getItem('startValue'))))
         const booleanValue = localStorage.getItem('isSecondVariant')
-        booleanValue && dispatch({type: StateValues.SET_SECOND_VARIANT, isSecondVariant: JSON.parse(booleanValue)})
-
+        booleanValue && dispatch(setSecondVariantAC(JSON.parse(booleanValue)))
     }, [])
 
     useEffect(() => {
