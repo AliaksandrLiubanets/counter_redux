@@ -5,28 +5,21 @@ import {FirstVariant} from './components/FirstVariant'
 import {Link, Route, Routes} from 'react-router-dom'
 import DisplayCounter from './components/DisplayCounter'
 import DisplaySettings from './components/DisplaySettings'
-import {
-    ActionType,
-    setEditModeAC,
-    setMaxValueAC,
-    setSecondVariantAC,
-    setStartValueAC,
-    StateType
-} from './store/stateReducer'
+import {setEditModeAC, setMaxValueAC, setSecondVariantAC, setStartValueAC, StateType} from './store/stateReducer'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppStateType} from './store/store'
 
-type AppPropsType = {
-    state: StateType
-    dispatch: (action: ActionType) => void
-}
+function App() {
 
-function App({state, dispatch}: AppPropsType) {
+    const state = useSelector<AppStateType, StateType>((state) => state.state)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(setMaxValueAC(Number(localStorage.getItem('maxValue'))))
         dispatch(setStartValueAC(Number(localStorage.getItem('startValue'))))
         const booleanValue = localStorage.getItem('isSecondVariant')
         booleanValue && dispatch(setSecondVariantAC(JSON.parse(booleanValue)))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         localStorage.setItem('maxValue', JSON.stringify(state.maxValue))
