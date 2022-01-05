@@ -9,7 +9,7 @@ import {store} from './store/store'
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-          <App state={store.getState().state} dispatch={store.dispatch.bind(store)}/>
+          <App />
       </BrowserRouter>,
   </React.StrictMode>,
   document.getElementById('root')

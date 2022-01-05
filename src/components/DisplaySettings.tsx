@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 type DisplaySettingsPropsType = {
     setMaxValue: (value: number) => void
     setStartValue: (value: number) => void
-    setValueToStorage: () => void
+    // setValueToStorage: () => void
     setEditMode: (editMode: boolean) => void
     maxValue: number
     startValue: number
@@ -24,7 +24,7 @@ function DisplaySettings(props: DisplaySettingsPropsType) {
     const setValueToStorage = () => {
 
         if (conditionSetToStorage) {
-            props.setValueToStorage()
+            // props.setValueToStorage()
             props.setEditMode(false)
         }
     }

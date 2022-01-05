@@ -6,7 +6,7 @@ import s from '../styles/styles.module.css'
 type PropsType = {
     setMaxValue: (maxValue: number) => void
     setStartValue: (startValue: number) => void
-    setValueToStorage: () => void
+    // setValueToStorage: () => void
     setEditMode: (editMode: boolean) => void
     maxValue: number
     startValue: number
@@ -14,11 +14,18 @@ type PropsType = {
     isSecondVariant: boolean
 }
 
-export function FirstVariant({setMaxValue, setStartValue, setValueToStorage, setEditMode, maxValue, startValue, editMode, isSecondVariant}: PropsType) {
+export function FirstVariant({setMaxValue,
+                                 setStartValue,
+                                 // setValueToStorage,
+                                 setEditMode,
+                                 maxValue,
+                                 startValue,
+                                 editMode,
+                                 isSecondVariant}: PropsType) {
     return <div className={s.first__block}>
         <DisplaySettings setMaxValue={setMaxValue}
                          setStartValue={setStartValue}
-                         setValueToStorage={setValueToStorage}
+                         // setValueToStorage={setValueToStorage}
                          setEditMode={setEditMode}
                          maxValue={maxValue}
                          startValue={startValue}

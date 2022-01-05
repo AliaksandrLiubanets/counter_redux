@@ -5,29 +5,16 @@ import {FirstVariant} from './components/FirstVariant'
 import {Link, Route, Routes} from 'react-router-dom'
 import DisplayCounter from './components/DisplayCounter'
 import DisplaySettings from './components/DisplaySettings'
-import {
-    ActionType,
-    setEditModeAC,
-    setMaxValueAC,
-    setSecondVariantAC,
-    setStartValueAC,
-    stateReducer,
-    StateType
-} from './store/stateReducer'
+import {setEditModeAC, setMaxValueAC, setSecondVariantAC, setStartValueAC, stateReducer} from './store/stateReducer'
 
-type AppPropsType = {
-    state: StateType,
-    dispatch: (action: ActionType) => void
-}
+function App() {
 
-function App({state, dispatch}: AppPropsType) {
-
-    // const [state, dispatch] = useReducer(stateReducer, {
-    //     maxValue: 0,
-    //     startValue: 0,
-    //     editMode: false,
-    //     isSecondVariant: false,
-    // })
+    const [state, dispatch] = useReducer(stateReducer, {
+        maxValue: 0,
+        startValue: 0,
+        editMode: false,
+        isSecondVariant: false,
+    })
 
 
 
@@ -43,9 +30,6 @@ function App({state, dispatch}: AppPropsType) {
         localStorage.setItem('startValue', JSON.stringify(state.startValue))
         localStorage.setItem('isSecondVariant', JSON.stringify(state.isSecondVariant))
     }, [state.maxValue, state.startValue, state.isSecondVariant])
-
-    const setValueToStorage = () => {
-    }
 
     const offSetVariant = () => {
         dispatch(setSecondVariantAC(false))
@@ -76,7 +60,6 @@ function App({state, dispatch}: AppPropsType) {
                 <Route path="/" element={<FirstVariant
                     setMaxValue={setMaxValue}
                     setStartValue={setStartValue}
-                    setValueToStorage={setValueToStorage}
                     setEditMode={setEditMode}
                     maxValue={state.maxValue}
                     startValue={state.startValue}
@@ -94,7 +77,6 @@ function App({state, dispatch}: AppPropsType) {
                 <Route path="/settings" element={<DisplaySettings
                     setMaxValue={setMaxValue}
                     setStartValue={setStartValue}
-                    setValueToStorage={setValueToStorage}
                     setEditMode={setEditMode}
                     maxValue={state.maxValue}
                     startValue={state.startValue}
