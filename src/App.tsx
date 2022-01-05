@@ -1,22 +1,25 @@
-import React, {useEffect, useReducer} from 'react'
+import React, {useEffect} from 'react'
 import './App.css'
 import s from './styles/styles.module.css'
 import {FirstVariant} from './components/FirstVariant'
 import {Link, Route, Routes} from 'react-router-dom'
 import DisplayCounter from './components/DisplayCounter'
 import DisplaySettings from './components/DisplaySettings'
-import {setEditModeAC, setMaxValueAC, setSecondVariantAC, setStartValueAC, stateReducer} from './store/stateReducer'
+import {
+    ActionType,
+    setEditModeAC,
+    setMaxValueAC,
+    setSecondVariantAC,
+    setStartValueAC,
+    StateType
+} from './store/stateReducer'
 
-function App() {
+type AppPropsType = {
+    state: StateType
+    dispatch: (action: ActionType) => void
+}
 
-    const [state, dispatch] = useReducer(stateReducer, {
-        maxValue: 0,
-        startValue: 0,
-        editMode: false,
-        isSecondVariant: false,
-    })
-
-
+function App({state, dispatch}: AppPropsType) {
 
     useEffect(() => {
         dispatch(setMaxValueAC(Number(localStorage.getItem('maxValue'))))
