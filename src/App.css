@@ -1,6 +1,5 @@
 .App {
   background-color: #02023b;
-  height: 700px;
   display: grid;
   grid-template-rows: 1fr 10fr;
 }
